@@ -98,7 +98,7 @@ function publish(post, is_active) {
                                     class="input w-full max-w-xs" placeholder="Search...">
                             </div>
                             <div class="overflow-x-auto">
-                                <table class="table table-normal w-full text-center">
+                                <table class="table table-compact w-full text-center table-zebra">
                                     <thead
                                         class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
                                         <tr>
@@ -166,8 +166,9 @@ function publish(post, is_active) {
                                                 class=" px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap ">
                                                 {{ post.username }} </td>
                                             <td scope="row"
-                                                class=" px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap ">
-                                                {{ post.slug }} </td>
+                                                class=" px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap "
+                                                :title="post.slug">
+                                                {{ post.slug_limited }} </td>
                                             <td scope="row"
                                                 class=" px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap ">
                                                 <div v-if="post.permissions.publish && post.permissions.unpublish">

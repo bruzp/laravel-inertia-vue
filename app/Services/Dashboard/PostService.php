@@ -3,6 +3,7 @@
 namespace App\Services\Dashboard;
 
 use App\Models\Post;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -46,6 +47,8 @@ class PostService
                     'publish' => Auth::user()->can('publish', $post),
                     'unpublish' => Auth::user()->can('unpublish', $post),
                 ];
+
+                $post->slug_limited = Str::of($post->slug)->limit(10);
 
                 return $post;
             })
