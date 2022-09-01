@@ -1,6 +1,7 @@
 import './bootstrap';
 import '../css/app.css';
 
+import { vue3Debounce } from 'vue-debounce';
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
@@ -14,6 +15,7 @@ createInertiaApp({
     resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
     setup({ el, app, props, plugin }) {
         return createApp({ render: () => h(app, props) })
+            .directive('debounce', vue3Debounce({ lock: true }))
             .use(plugin)
             .use(ZiggyVue, Ziggy)
             .mount(el);

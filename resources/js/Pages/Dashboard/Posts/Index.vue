@@ -65,6 +65,10 @@ function publish(post, is_active) {
     });
 }
 
+function setSearchInput(input, event) {
+    params.search = input;
+}
+
 </script>
 
 <template>
@@ -94,7 +98,7 @@ function publish(post, is_active) {
                             <div class="mt-6 mb-6">
                                 <label for="default-search"
                                     class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
-                                <input id="default-search" type="search" v-model.lazy="params.search"
+                                <input id="default-search" type="text" v-debounce:300="setSearchInput"
                                     class="input w-full max-w-xs" placeholder="Search...">
                             </div>
                             <div class="overflow-x-auto">
@@ -160,11 +164,13 @@ function publish(post, is_active) {
                                                 class=" px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap ">
                                                 {{ post.id }} </td>
                                             <td scope="row"
-                                                class=" px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap ">
-                                                {{ post.title }} </td>
+                                                class=" px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap "
+                                                :title="post.title">
+                                                {{ post.title_limited }} </td>
                                             <td scope="row"
-                                                class=" px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap ">
-                                                {{ post.username }} </td>
+                                                class=" px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap "
+                                                :title="post.username">
+                                                {{ post.username_limited }} </td>
                                             <td scope="row"
                                                 class=" px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap "
                                                 :title="post.slug">
