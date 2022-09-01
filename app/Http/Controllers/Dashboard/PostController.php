@@ -20,8 +20,9 @@ class PostController extends Controller
     public function index(Request $request, PostService $service)
     {
         $request->validate([
-            'field' => ['nullable', 'in:id,title,slug,created_at,username'],
+            'field' => ['nullable', 'in:id,title,slug,created_at,username,updated_at'],
             'direction' => ['nullable', 'in:asc,desc'],
+            'search' => ['nullable'],
         ]);
 
         return Inertia::render(
