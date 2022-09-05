@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Post;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
-use App\Services\Dashboard\PostService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
+use App\Services\Dashboard\PostService;
 use App\Http\Requests\UpdatePostRequest;
 
 class PostController extends Controller
