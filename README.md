@@ -82,6 +82,10 @@ Follow these steps to try this out on your localhost.
    ```sh
    php artisan serve
    ```
+10. Run symlink command
+   ```sh
+   php artisan storage:link
+   ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
